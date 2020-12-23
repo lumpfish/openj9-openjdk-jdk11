@@ -24,7 +24,9 @@
 # @test
 # @summary Basic test of -Djava.security.manager to a class in named module.
 
-set -e
+#set -e
+set -x
+`env`
 
 if [ -z "$TESTJAVA" ]; then
   if [ $# -lt 1 ]; then exit 1; fi
@@ -50,6 +52,8 @@ esac
 JAVAC="$COMPILEJAVA/bin/javac"
 JAVA="$TESTJAVA/bin/java ${TESTVMOPTS}"
 
+`find ${TESTSRC}/m -name "*.java"`
+
 mkdir -p mods
 $JAVAC -d mods --module-source-path ${TESTSRC} `find ${TESTSRC}/m -name "*.java"`
 
@@ -63,4 +67,6 @@ $JAVA -cp classes --module-path mods --add-modules m \
     -Djava.security.manager=p.CustomSecurityManager \
     -Djava.security.policy=${TESTSRC}/test.policy Test
 
-exit 0
+# Force test failure
+exit 1
+#exit 0
