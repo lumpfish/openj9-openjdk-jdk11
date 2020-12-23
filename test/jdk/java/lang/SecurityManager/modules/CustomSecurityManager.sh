@@ -52,8 +52,6 @@ esac
 JAVAC="$COMPILEJAVA/bin/javac"
 JAVA="$TESTJAVA/bin/java ${TESTVMOPTS}"
 
-`find ${TESTSRC}/m -name "*.java"`
-
 mkdir -p mods
 $JAVAC -d mods --module-source-path ${TESTSRC} `find ${TESTSRC}/m -name "*.java"`
 
