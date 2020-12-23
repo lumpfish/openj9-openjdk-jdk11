@@ -53,6 +53,7 @@ JAVAC="$COMPILEJAVA/bin/javac"
 JAVA="$TESTJAVA/bin/java ${TESTVMOPTS}"
 
 mkdir -p mods
+`ls ${TESTSRC}/m`
 $JAVAC -d mods --module-source-path ${TESTSRC} `find ${TESTSRC}/m -name "*.java"`
 
 mkdir -p classes
