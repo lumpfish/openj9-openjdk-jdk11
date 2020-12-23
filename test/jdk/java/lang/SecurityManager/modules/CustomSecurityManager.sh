@@ -26,7 +26,7 @@
 
 #set -e
 set -x
-`env`
+env
 
 if [ -z "$TESTJAVA" ]; then
   if [ $# -lt 1 ]; then exit 1; fi
